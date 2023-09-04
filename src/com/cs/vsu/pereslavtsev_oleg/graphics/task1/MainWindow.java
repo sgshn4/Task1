@@ -1,3 +1,7 @@
+package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
+
+import com.cs.vsu.pereslavtsev_oleg.graphics.task1.DrawPanel;
+
 import javax.swing.*;
 
 public class MainWindow extends JFrame {

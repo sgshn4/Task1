@@ -1,3 +1,5 @@
+package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
+
 import javax.swing.*;
 import java.awt.*;
 
