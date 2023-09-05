@@ -1,7 +1,6 @@
 package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
 
 import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.Background;
-import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.primitives.Primitives;
 
 import javax.swing.*;
 import java.awt.*;
