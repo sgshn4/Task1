@@ -55,6 +55,9 @@ public class DrawPanel extends JPanel {
         ufo.draw(g, getWidth() / 2, 600, 150, 400, 75);
 
         Cow cow = new Cow();
-        cow.draw(g,  getWidth() / 2 - 1200 , 150);
+        cow.draw(g,  getWidth() / 2 - 1130 , 150);
+
+        Light light = new Light();
+        light.draw(g, getWidth() / 2 - 170, 610, 430);
     }
 }
