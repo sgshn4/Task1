@@ -49,5 +49,8 @@ public class DrawPanel extends JPanel {
         cactus3.addPaw(1200, 800, 20, 300, -1);
         cactus3.addPaw(1224, 850, 30, 400, 1);
         cactus3.draw(g, 1200, 750, 24, 150);
+
+        UFO ufo = new UFO();
+        ufo.draw(g, getWidth() / 2, 600, 150, 400, 75);
     }
 }
