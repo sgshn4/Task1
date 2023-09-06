@@ -30,5 +30,7 @@ public class DrawPanel extends JPanel {
         Ground ground = new Ground();
         ground.draw(g, getWidth(), getHeight(), 0, 900, 20, 0.01f);
 
+        Cactus cactus = new Cactus();
+        cactus.draw(g, 100, 800, 40, 300);
     }
 }
