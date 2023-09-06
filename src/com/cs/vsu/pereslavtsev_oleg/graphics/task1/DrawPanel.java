@@ -1,7 +1,6 @@
 package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
 
 import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.*;
-import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.primitives.Primitives;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +29,19 @@ public class DrawPanel extends JPanel {
         Ground ground = new Ground();
         ground.draw(g, getWidth(), getHeight(), 0, 900, 20, 0.01f);
 
-        Cactus cactus = new Cactus();
-        cactus.draw(g, 100, 800, 40, 300);
+        Cactus cactus1 = new Cactus();
+        cactus1.addPaw(100, 730, 50, 400, -1);
+        cactus1.addPaw(140, 830, 60, 400, 1);
+        cactus1.draw(g, 100, 600, 40, 350);
+
+        Cactus cactus2 = new Cactus();
+        cactus2.addPaw(600, 890, 20, 200, -1);
+        cactus2.addPaw(620, 840, 16, 150, 1);
+        cactus2.draw(g, 600, 800, 20, 100);
+
+        Cactus cactus3 = new Cactus();
+        cactus3.addPaw(1200, 800, 20, 300, -1);
+        cactus3.addPaw(1224, 850, 30, 400, 1);
+        cactus3.draw(g, 1200, 750, 24, 150);
     }
 }
