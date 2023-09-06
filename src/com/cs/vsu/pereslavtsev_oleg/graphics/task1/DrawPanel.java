@@ -11,21 +11,24 @@ public class DrawPanel extends JPanel {
     public void paint(Graphics gr) {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
-        Primitives primitives = new Primitives();
-        primitives.drawSin(g, 20, 300, 20, 0.01);
-//        Background background = new Background();
-//        background.draw(g, getWidth(), getHeight());
-//
-//        Mountain1 mountain1 = new Mountain1();
-//        mountain1.draw(g, getWidth(), getHeight());
-//
-//        Mountain2 mountain2 = new Mountain2();
-//        mountain2.draw(g, getWidth(), getHeight());
-//
-//        Mountain3 mountain3 = new Mountain3();
-//        mountain3.draw(g, getWidth(), getHeight());
-//
-//        Mountain4 mountain4 = new Mountain4();
-//        mountain4.draw(g, getWidth(), getHeight());
+
+        Background background = new Background();
+        background.draw(g, getWidth(), getHeight());
+
+        Mountain1 mountain1 = new Mountain1();
+        mountain1.draw(g, getWidth(), getHeight(), -20);
+
+        Mountain2 mountain2 = new Mountain2();
+        mountain2.draw(g, getWidth(), getHeight(), -40);
+
+        Mountain3 mountain3 = new Mountain3();
+        mountain3.draw(g, getWidth(), getHeight(), -40);
+
+        Mountain4 mountain4 = new Mountain4();
+        mountain4.draw(g, getWidth(), getHeight(), -50);
+
+        Ground ground = new Ground();
+        ground.draw(g, getWidth(), getHeight(), 0, 900, 20, 0.01f);
+
     }
 }
