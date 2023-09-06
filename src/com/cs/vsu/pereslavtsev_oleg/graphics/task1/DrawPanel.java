@@ -1,6 +1,7 @@
 package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
 
 import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.*;
+import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.primitives.Primitives;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +34,7 @@ public class DrawPanel extends JPanel {
         mountain4.draw(g, getWidth(), getHeight(), -50);
 
         Ground ground = new Ground();
-        ground.draw(g, getWidth(), getHeight(), 0, 900, 20, 0.01f);
+        ground.draw(g, 0, 900, 20, 0.01f);
 
         Cactus cactus1 = new Cactus();
         cactus1.addPaw(100, 730, 50, 400, -1);
@@ -52,5 +53,8 @@ public class DrawPanel extends JPanel {
 
         UFO ufo = new UFO();
         ufo.draw(g, getWidth() / 2, 600, 150, 400, 75);
+
+        Cow cow = new Cow();
+        cow.draw(g);
     }
 }

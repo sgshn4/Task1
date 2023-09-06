@@ -17,4 +17,9 @@ public class Primitives {
 
         g.drawPolygon(x, y, 1702);
     }
+
+    public void drawOval(Graphics2D g, int startX, int startY, int r) {
+        g.setPaint(new Color(0, 0, 0));
+        g.fillArc(startX, startY, r, r, 0, 180);
+    }
 }

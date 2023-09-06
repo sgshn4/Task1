@@ -1,11 +1,10 @@
 package com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements;
 
-import com.cs.vsu.pereslavtsev_oleg.graphics.task1.Utils;
 
 import java.awt.*;
 
 public class Ground {
-    public void draw(Graphics2D g, int width, int height, int startX, int startY, int arg1, float arg2) {
+    public void draw(Graphics2D g, int startX, int startY, int arg1, float arg2) {
         int[] x = new int[1702];
         int[] y = new int[1702];
         x[0] = startX + -10;

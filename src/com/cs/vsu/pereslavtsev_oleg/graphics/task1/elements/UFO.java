@@ -6,10 +6,10 @@ public class UFO {
     public void draw(Graphics2D g, int x, int y, int r, int width, int height) {
         g.setPaint(new Color(206, 23, 32));
         g.rotate(-Math.PI / 9, x - 150, y - 50);
-        g.fillOval(x - width / 2 - r / 2, y - height / 2 - r / 2, r, r);
+        g.fillArc(x - width / 2 - r / 2, y - height / 2 - r / 2, r, r, 0, 180);
         g.setPaint(new Color(0, 0, 0));
         g.setStroke(new BasicStroke(3));
-        g.drawOval(x - width / 2 - r / 2, y - height / 2 - r / 2, r, r);
+        g.drawArc(x - width / 2 - r / 2, y - height / 2 - r / 2, r, r, 0, 180);
         g.setStroke(new BasicStroke(1));
         g.fillOval(x - width, y - height, width, height);
         g.setPaint(new Color(206, 23, 32));
