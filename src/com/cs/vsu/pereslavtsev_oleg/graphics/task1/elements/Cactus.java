@@ -41,10 +41,6 @@ public class Cactus {
     }
 
     class Paw {
-        private int startX;
-        private int startY;
-        private int width;
-        private int height;
         private int peakX;
         private int peakY;
         private int peakWidth;
@@ -55,10 +51,6 @@ public class Cactus {
 
 
         public Paw(int startX, int startY, int width, int height, int arg) {
-            this.startX = startX;
-            this.startY = startY;
-            this.width = width;
-            this.height = height;
             this.arg = arg;
 
             List<Integer> xRight = new ArrayList<>();

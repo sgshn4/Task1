@@ -11,8 +11,14 @@ public class DrawPanel extends JPanel {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
 
+        //Anti-aliasing
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
         Background background = new Background();
         background.draw(g, getWidth(), getHeight());
+
+        Sun sun = new Sun();
+        sun.draw(g, getWidth() / 2 - 250, 100, 500);
 
         Mountain1 mountain1 = new Mountain1();
         mountain1.draw(g, getWidth(), getHeight(), -20);
