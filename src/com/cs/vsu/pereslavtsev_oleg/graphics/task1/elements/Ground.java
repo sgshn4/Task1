@@ -4,6 +4,8 @@ package com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements;
 import java.awt.*;
 
 public class Ground {
+
+
     public void draw(Graphics2D g, int startX, int startY, int arg1, float arg2) {
         int[] x = new int[1702];
         int[] y = new int[1702];
