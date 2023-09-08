@@ -7,6 +7,7 @@ public class Tablet {
     public void draw(Graphics2D g, int startX, int startY) {
         g.setPaint(new Color(47, 0, 0));
 //        g.rotate(-1.5 * Math.PI / 4, startX, y);
+        //Draw leg
         g.setStroke(new BasicStroke(5));
         g.drawLine(startX, startY, startX, startY - 70);
         int[] x = {startX - 75, startX - 75, startX - 67, startX - 75, startX - 75,
@@ -16,9 +17,11 @@ public class Tablet {
                 startY - 120, startY - 120, startY - 109, startY - 107,
                 startY - 105, startY - 97, startY - 95, startY - 93, startY - 70};
 
+        //Draw deck
         g.setStroke(new BasicStroke(1));
         g.fillPolygon(x, y, x.length);
 
+        //Draw String
         g.setPaint(new Color(0, 0, 0));
         g.setFont(new Font("Times", Font.BOLD, 18));
         g.drawString("I Want to belive", startX - 70, startY - 90);

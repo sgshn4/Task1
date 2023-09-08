@@ -19,6 +19,7 @@ public class DrawPanel extends JPanel {
 
 
     public DrawPanel() {
+        //Animations
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {

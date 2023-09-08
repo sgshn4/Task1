@@ -25,16 +25,8 @@ public class Light {
 
         //Filling space
         g.setPaint(new Color(206, 23, 32, 30));
-        int[] x = new int[4];
-        int[] y = new int[4];
-        x[0] = startX[0];
-        y[0] = startY[0];
-        x[1] = finishX1;
-        y[1] = finishY1;
-        x[2] = finishX2;
-        y[2] = finishY2;
-        x[3] = startX[1];
-        y[3] = startY[1];
+        int[] x = {startX[0], finishX1, finishX2, startX[1]};
+        int[] y = {startY[0], finishY1, finishY2, startY[1]};
         g.fillPolygon(x, y, x.length);
     }
 
