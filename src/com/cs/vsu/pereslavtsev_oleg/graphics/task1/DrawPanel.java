@@ -59,5 +59,8 @@ public class DrawPanel extends JPanel {
 
         Light light = new Light();
         light.draw(g, ufo.getLightsX(), ufo.getLightsY(), 220, 320);
+
+        Tablet tablet = new Tablet();
+        tablet.draw(g, 1400, 930);
     }
 }
