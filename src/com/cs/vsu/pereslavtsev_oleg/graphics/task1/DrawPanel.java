@@ -1,12 +1,63 @@
 package com.cs.vsu.pereslavtsev_oleg.graphics.task1;
 
 import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.*;
-import com.cs.vsu.pereslavtsev_oleg.graphics.task1.elements.primitives.Primitives;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DrawPanel extends JPanel {
+
+    private int ufoY = 580;
+    private int ufoAmplitude = 0;
+    private boolean ufoTop = true;
+
+    private int cowY = 160;
+    private int cowAmplitude = 0;
+    private boolean cowTop = false;
+
+
+    public DrawPanel() {
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                update();
+                repaint();
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(timerTask, 0, 1000 / 60);
+    }
+
+    private void update() {
+        if (ufoTop) {
+            ufoAmplitude++;
+            if (ufoAmplitude == 30) {
+                ufoTop = false;
+            }
+        } else {
+            ufoAmplitude--;
+            if (ufoAmplitude == -30) {
+                ufoTop = true;
+            }
+        }
+        ufoY = 600 + (int) (20 * Math.sin(ufoAmplitude * 0.01f));
+
+        if (cowTop) {
+            cowAmplitude++;
+            if (cowAmplitude == 50) {
+                cowTop = false;
+            }
+        } else {
+            cowAmplitude--;
+            if (cowAmplitude == -50) {
+                cowTop = true;
+            }
+        }
+        cowY = 160 + (int) (10 * Math.sin(cowAmplitude * 0.01f));
+    }
+
     @Override
     public void paint(Graphics gr) {
         super.paint(gr);
@@ -52,10 +103,10 @@ public class DrawPanel extends JPanel {
         cactus3.draw(g, 1200, 740, 24, 150);
 
         UFO ufo = new UFO();
-        ufo.draw(g, getWidth() / 2, 600, 150, 400, 75);
+        ufo.draw(g, getWidth() / 2, ufoY, 150, 400, 75);
 
         Cow cow = new Cow();
-        cow.draw(g,  getWidth() / 2 - 1130 , 150);
+        cow.draw(g,  getWidth() / 2 - 1130 , cowY);
 
         Light light = new Light();
         light.draw(g, ufo.getLightsX(), ufo.getLightsY(), 220, 320);
