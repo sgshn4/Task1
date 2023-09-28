@@ -5,14 +5,37 @@ import com.cs.vsu.pereslavtsev_oleg.graphics.task1.Utils;
 import java.awt.*;
 
 public class Mountain3 {
-    public void draw(Graphics2D g, int width, int height, int startY) {
-        int[] x = {-10, 0, 80, 160, 175, 350, 400, 530, 590, 735, 850, 950, 990, 1020, 1060, 1200, 1250, 1350, 1430, 1500, 1700, 1710};
-        int[] y = {1000, startY, startY - 15, startY - 5, startY - 15, startY + 15, startY + 25, startY - 15,
-                startY + 30, startY + 70, startY - 40, startY - 65, startY - 15, startY - 5, startY + 30, startY -35,
-                startY - 25, startY + 15, startY + 65, startY + 10, startY -35, 1000};
-        g.setPaint(new LinearGradientPaint(width / 2, Utils.findMin(y), width / 2, height - (int)(height / 20),
-                new float[] {0.1f, 0.9f},
-                new Color[] {new Color(125, 8, 33), new Color(162, 20, 33)}));
-        g.fillPolygon(x, y, x.length);
+
+    private int width;
+    private int height;
+    private int startY;
+    private int partWidth;
+
+    private int[] multiplierX = {-10, 0, 5, 10, 11, 21, 25, 33, 36, 45, 53, 59, 61, 63, 66, 75, 78, 84, 89, 93, 106, 110};
+    private int[] multiplierY = {1000, 0, -15, -5, -15, 15, 25, -15, 30, 70, -40, -65, -15, -5, 30, -35, -25, 15, 65, 10, -35, 1000};
+
+    public Mountain3(int width, int height, int startY, int partWidth) {
+        this.width = width;
+        this.height = height;
+        this.startY = startY;
+        this.partWidth = partWidth;
+    }
+
+    public void draw(Graphics2D g, int width, int height, int startY, int partWidth) {
+        int[] pointsX = new int[multiplierX.length];
+        int[] pointsY = new int[multiplierY.length];
+        for (int i = 0; i < pointsX.length; i++) {
+            pointsX[i] = partWidth * multiplierX[i];
+            if (i == 0 || i == multiplierX.length - 1) {
+                pointsY[i] = 1000;
+            } else {
+                pointsY[i] = startY + multiplierY[i];
+            }
+        }
+        g.setPaint(new LinearGradientPaint(width / 2, Utils.findMin(pointsY), width / 2,
+                height - (int) (height / 20),
+                new float[]{0.1f, 0.9f},
+                new Color[]{new Color(125, 8, 33), new Color(162, 20, 33)}));
+        g.fillPolygon(pointsX, pointsY, pointsX.length);
     }
 }

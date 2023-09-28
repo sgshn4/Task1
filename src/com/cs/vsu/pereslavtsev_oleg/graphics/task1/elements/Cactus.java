@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cactus {
-
     private List<Paw> paws = new ArrayList<>();
+    private int width;
+    private int height;
 
-    public void draw(Graphics2D g, int startX, int startY, int width, int height) {
+    public Cactus(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void draw(Graphics2D g, int startX, int startY) {
         g.setPaint(new Color(50, 1, 22));
         g.fillRect(startX, startY, width, height);
         g.fillOval(startX, startY - width / 2, width, width);
@@ -17,8 +23,12 @@ public class Cactus {
         }
     }
 
-    public void addPaw(int startX, int startY, int width, int height, int arg) {
-        paws.add(new Paw(startX, startY, width, height, arg));
+    public void setCoordinatesToPaw(int index, int startX, int startY) {
+        paws.get(index).setPosition(startX, startY);
+    }
+
+    public void addPaw(int width, int height, int arg) {
+        paws.add(new Paw(width, height, arg));
     }
 
     private int[] listToArray(List<Integer> list) {
@@ -45,14 +55,26 @@ public class Cactus {
         private int peakY;
         private int peakWidth;
         private int arg;
+        private int width;
+        private int height;
 
         private int[] x;
         private int[] y;
 
 
-        public Paw(int startX, int startY, int width, int height, int arg) {
+        public Paw(int width, int height, int arg) {
             this.arg = arg;
+            this.width = width;
+            this.height = height;
+        }
 
+        public void draw(Graphics2D g) {
+            g.setPaint(new Color(50, 1, 22));
+            g.fillPolygon(x, y, x.length);
+            g.fillOval(peakX - peakWidth, peakY - peakWidth / 2, peakWidth, peakWidth);
+        }
+
+        public void setPosition(int startX, int startY) {
             List<Integer> xRight = new ArrayList<>();
             List<Integer> yRight = new ArrayList<>();
             List<Integer> xLeft = new ArrayList<>();
@@ -90,12 +112,6 @@ public class Cactus {
             }
             x = listToArray(listCoordinatesBuilder(xLeft, xRight));
             y = listToArray(listCoordinatesBuilder(yLeft, yRight));
-        }
-
-        public void draw(Graphics2D g) {
-            g.setPaint(new Color(50, 1, 22));
-            g.fillPolygon(x, y, x.length);
-            g.fillOval(peakX - peakWidth, peakY - peakWidth / 2, peakWidth, peakWidth);
         }
     }
 }

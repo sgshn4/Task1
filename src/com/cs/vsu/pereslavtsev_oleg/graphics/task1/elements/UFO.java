@@ -7,7 +7,21 @@ public class UFO {
     private int[] lightsX = new int[2];
     private int[] lightsY = new int[2];
 
-    public void draw(Graphics2D g, int x, int y, int r, int width, int height) {
+    private int x;
+    private int y;
+    private int r;
+    private int width;
+    private int height;
+
+    public UFO(int x, int y, int r, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.width = width;
+        this.height = height;
+    }
+
+    public void draw(Graphics2D g, int x, int y) {
         //Cabin
         g.setPaint(new Color(206, 23, 32));
         g.rotate(-Math.PI / 9, x - 150, y - 50);

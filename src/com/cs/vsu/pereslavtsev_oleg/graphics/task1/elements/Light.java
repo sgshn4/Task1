@@ -4,8 +4,19 @@ import java.awt.*;
 
 public class Light {
 
+    private int[] startX;
+    private int startY;
+    private int width;
+    private int height;
 
-    public void draw(Graphics2D g, int[] startX, int[] startY, int width, int height) {
+    public Light(int width, int height) {
+        this.startX = startX;
+        this.startY = startY;
+        this.width = width;
+        this.height = height;
+    }
+
+    public void draw(Graphics2D g, int[] startX, int[] startY) {
         g.setPaint(new Color(0, 0, 0));
 
         //Math
