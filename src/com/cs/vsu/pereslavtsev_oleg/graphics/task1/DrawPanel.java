@@ -37,18 +37,9 @@ public class DrawPanel extends JPanel {
         ground = new Ground(0, 0, 20, 0.01f, 0);
 
         cactusList = new ArrayList<>();
-        cactusList.add(new Cactus(40, 350));
-        cactusList.get(0).addPaw(50, 400, -1);
-        cactusList.get(0).addPaw(60, 400, 1);
-
-        cactusList.add(new Cactus(20, 100));
-        cactusList.get(1).addPaw(20, 200, -1);
-        cactusList.get(1).addPaw(16, 150, 1);
-
-        cactusList.add(new Cactus(24, 150));
-        cactusList.get(2).addPaw(20, 300, -1);
-//        cactusList.get(2).setCoordinatesToPaw(0, );
-        cactusList.get(2).addPaw(30, 300, 1);
+        cactusList.add(CactusFactory.createFirst());
+        cactusList.add(CactusFactory.createSecondary());
+        cactusList.add(CactusFactory.createThird());
 
 
         ufo = new UFO(0, 0, 150, 400, 75);
@@ -75,15 +66,9 @@ public class DrawPanel extends JPanel {
         mountain4.draw(g, getWidth(), getHeight(), partHeight, partWidth);
         ground.draw(g, 0, partHeight * 95, partHeight);
 
-        cactusList.get(0).setCoordinatesToPaw(0, partWidth * 6, partHeight * 80);
-        cactusList.get(0).setCoordinatesToPaw(1, partWidth * 6 + 40, partHeight * 91);
-        cactusList.get(0).draw(g, partWidth * 6, partHeight * 65);
-        cactusList.get(1).setCoordinatesToPaw(0, partWidth * 35, partHeight * 89);
-        cactusList.get(1).setCoordinatesToPaw(1, partWidth * 35 + 20, partHeight * 87);
-        cactusList.get(1).draw(g, partWidth * 35, partHeight * 85);
-        cactusList.get(2).setCoordinatesToPaw(0, partWidth * 75, partHeight * 87);
-        cactusList.get(2).setCoordinatesToPaw(1, partWidth * 75 + 24, partHeight * 94);
-        cactusList.get(2).draw(g, partWidth * 75, partHeight * 82);
+        for (Cactus i : cactusList) {
+            i.draw(g, partWidth, partHeight);
+        }
         ufo.draw(g, partWidth * 55, partHeight * 67);
         cow.draw(g,  partWidth * 48 , partHeight * 93);
         light.draw(g, ufo.getLightsX(), ufo.getLightsY());
