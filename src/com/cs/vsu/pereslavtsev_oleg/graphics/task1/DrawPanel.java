@@ -11,24 +11,16 @@ import java.util.TimerTask;
 
 public class DrawPanel extends JPanel {
 
-    private int ufoY = 580;
-    private int ufoAmplitude = 0;
-    private boolean ufoTop = true;
-
-    private int cowY = 160;
-    private int cowAmplitude = 0;
-    private boolean cowTop = false;
-
     private int partWidth;
     private int partHeight;
 
     private Background background;
     private Sun sun;
     private List<Cactus> cactusList;
-    private Mountain1 mountain1;
-    private Mountain2 mountain2;
-    private Mountain3 mountain3;
-    private Mountain4 mountain4;
+    private Mountain mountain1;
+    private Mountain mountain2;
+    private Mountain mountain3;
+    private Mountain mountain4;
     private Ground ground;
     private UFO ufo;
     private Light light;
@@ -36,23 +28,12 @@ public class DrawPanel extends JPanel {
     private Tablet tablet;
 
     public DrawPanel() {
-        //Animations
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-//                update();
-                repaint();
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(timerTask, 0, 10);
-
         background = new Background();
         sun = new Sun(500);
-        mountain1 = new Mountain1(0, 0, 0, 0);
-        mountain2 = new Mountain2(0, 0, 0, 0);
-        mountain3 = new Mountain3(0, 0, 0, 0);
-        mountain4 = new Mountain4(0, 0, 0, 0);
+        mountain1 = MountainFactory.createFirst();
+        mountain2 = MountainFactory.createSecondary();
+        mountain3 = MountainFactory.createThird();
+        mountain4 = MountainFactory.createFourth();
         ground = new Ground(0, 0, 20, 0.01f, 0);
 
         cactusList = new ArrayList<>();
@@ -75,37 +56,6 @@ public class DrawPanel extends JPanel {
         light = new Light(220, 320);
         tablet = new Tablet();
     }
-
-    int t = 0;
-    private void update() {
-        t++;
-        if (ufoTop) {
-            ufoAmplitude++;
-            if (ufoAmplitude == 15) {
-                ufoTop = false;
-            }
-        } else {
-            ufoAmplitude--;
-            if (ufoAmplitude == -15) {
-                ufoTop = true;
-            }
-        }
-        ufoY = partHeight * 56 + (int) (20 * Math.sin(t * 0.01f));
-
-        if (cowTop) {
-            cowAmplitude++;
-            if (cowAmplitude == 25) {
-                cowTop = false;
-            }
-        } else {
-            cowAmplitude--;
-            if (cowAmplitude == -25) {
-                cowTop = true;
-            }
-        }
-        cowY = partHeight * 90 + (int) (10 * Math.sin(cowAmplitude * 0.1f));
-    }
-
     @Override
     public void paint(Graphics gr) {
         super.paint(gr);
@@ -119,10 +69,10 @@ public class DrawPanel extends JPanel {
         background.draw(g, getWidth(), getHeight());
 
         sun.draw(g, getWidth() / 2 - 250, partHeight * 11);
-        mountain1.draw(g, getWidth(), getHeight(), partHeight * 48, partWidth);
-        mountain2.draw(g, getWidth(), getHeight(), partHeight * 58, partWidth);
-        mountain3.draw(g, getWidth(), getHeight(), partHeight * 75, partWidth);
-        mountain4.draw(g, getWidth(), getHeight(), partHeight * 87, partWidth);
+        mountain1.draw(g, getWidth(), getHeight(), partHeight, partWidth);
+        mountain2.draw(g, getWidth(), getHeight(), partHeight, partWidth);
+        mountain3.draw(g, getWidth(), getHeight(), partHeight, partWidth);
+        mountain4.draw(g, getWidth(), getHeight(), partHeight, partWidth);
         ground.draw(g, 0, partHeight * 95, partHeight);
 
         cactusList.get(0).setCoordinatesToPaw(0, partWidth * 6, partHeight * 80);
