@@ -24,13 +24,13 @@ public class Cow {
         this.startY = startY;
     }
 
-    public void draw(Graphics2D g, int startX, int startY) {
+    public void draw(Graphics2D g, int multiplierX, int multiplierY) {
         int[] pointsX = new int[x.length];
         int[] pointsY = new int[y.length];
 
         for (int i = 0; i < pointsX.length; i++) {
-            pointsX[i] = startX + x[i];
-            pointsY[i] = startY + y[i];
+            pointsX[i] = multiplierX * startX + x[i];
+            pointsY[i] = multiplierY * startY + y[i];
         }
 
         g.setPaint(new Color(0, 0, 0));

@@ -16,11 +16,8 @@ public class DrawPanel extends JPanel {
 
     private Background background;
     private Sun sun;
+    private List<Mountain> mountains;
     private List<Cactus> cactusList;
-    private Mountain mountain1;
-    private Mountain mountain2;
-    private Mountain mountain3;
-    private Mountain mountain4;
     private Ground ground;
     private UFO ufo;
     private Light light;
@@ -29,12 +26,15 @@ public class DrawPanel extends JPanel {
 
     public DrawPanel() {
         background = new Background();
-        sun = new Sun(500);
-        mountain1 = MountainFactory.createFirst();
-        mountain2 = MountainFactory.createSecondary();
-        mountain3 = MountainFactory.createThird();
-        mountain4 = MountainFactory.createFourth();
-        ground = new Ground(0, 0, 20, 0.01f, 0);
+        sun = new Sun(500, 11);
+
+        mountains = new ArrayList<>();
+        mountains.add(MountainFactory.createFirst());
+        mountains.add(MountainFactory.createSecondary());
+        mountains.add(MountainFactory.createThird());
+        mountains.add(MountainFactory.createFourth());
+
+        ground = new Ground(0, 95, 20, 0.01f);
 
         cactusList = new ArrayList<>();
         cactusList.add(CactusFactory.createFirst());
@@ -42,10 +42,10 @@ public class DrawPanel extends JPanel {
         cactusList.add(CactusFactory.createThird());
 
 
-        ufo = new UFO(0, 0, 150, 400, 75);
-        cow = new Cow(0, 0);
+        ufo = new UFO(55, 67, 150, 400, 75);
+        cow = new Cow(48, 92);
         light = new Light(220, 320);
-        tablet = new Tablet();
+        tablet = new Tablet(87, 100);
     }
     @Override
     public void paint(Graphics gr) {
@@ -58,20 +58,21 @@ public class DrawPanel extends JPanel {
         //Anti-aliasing
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         background.draw(g, getWidth(), getHeight());
+        sun.draw(g, getWidth(), partHeight);
 
-        sun.draw(g, getWidth() / 2 - 250, partHeight * 11);
-        mountain1.draw(g, getWidth(), getHeight(), partHeight, partWidth);
-        mountain2.draw(g, getWidth(), getHeight(), partHeight, partWidth);
-        mountain3.draw(g, getWidth(), getHeight(), partHeight, partWidth);
-        mountain4.draw(g, getWidth(), getHeight(), partHeight, partWidth);
-        ground.draw(g, 0, partHeight * 95, partHeight);
+        for (Mountain i : mountains) {
+            i.draw(g, getWidth(), getHeight(), partHeight, partWidth);
+        }
+
+        ground.draw(g, 0, partHeight);
 
         for (Cactus i : cactusList) {
             i.draw(g, partWidth, partHeight);
         }
-        ufo.draw(g, partWidth * 55, partHeight * 67);
-        cow.draw(g,  partWidth * 48 , partHeight * 93);
+
+        ufo.draw(g, partWidth, partHeight);
+        cow.draw(g,  partWidth, partHeight);
         light.draw(g, ufo.getLightsX(), ufo.getLightsY());
-        tablet.draw(g, partWidth * 87, partHeight * 100);
+        tablet.draw(g, partWidth, partHeight);
     }
 }
